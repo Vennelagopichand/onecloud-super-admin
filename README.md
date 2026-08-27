@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Super Admin Portal
 
 A responsive **Super Admin Dashboard & Tenant Management** application built using React, TypeScript, and TanStack Query.
@@ -59,3 +60,6 @@ http://localhost:5173
 ```
 
 
+=======
+# onecloud-super-admin
+>>>>>>> 57a7a7cac3981e19395e1ccd684c7b7c13f9de01
