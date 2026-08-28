@@ -1,65 +1,55 @@
-<<<<<<< HEAD
 # Super Admin Portal
 
-A responsive **Super Admin Dashboard & Tenant Management** application built using React, TypeScript, and TanStack Query.
+A responsive **Super Admin Dashboard & Tenant Management System** built using React, TypeScript, Vite, and TanStack Query.
 
 ## Features
 
-* Global Dashboard
-* KPI Cards
-* Platform Health
-* Analytics
-* Recent Activities
-* Tenant List
-* Search & Filters
-* Sorting & Pagination
-* Create Tenant
-* View Tenant
-* Edit Tenant
-* Activate / Deactivate Tenant
-* Form Validation
-* Loading & Error States
-* TanStack Query Caching
-* Query Invalidation
-* Responsive UI
+### Global Dashboard
+- Total Tenants
+- Active Tenants
+- Inactive Tenants
+- Total Users
+- Active Licenses
+- Platform Health
+- Tenant Growth Analytics
+- Active vs Inactive Tenant Analytics
+- Recent Activities
 
-## Tech Stack
+### Tenant Management
+- View tenant list
+- Search by tenant name/code
+- Filter by status
+- Filter by subscription plan
+- Sort tenants
+- Pagination
+- Create tenant
+- View tenant details
+- Edit tenant
+- Activate tenant
+- Deactivate tenant
 
-* React
-* TypeScript
-* Vite
-* TanStack Query
-* React Router
-* CSS
+## TanStack Query
 
-## Data
+TanStack Query is used for tenant state management, caching, mutations, and query invalidation.
 
-Tenant data is stored in a **local TypeScript array**. No backend/API server is required.
+Main hooks include:
 
-TanStack Query is used for:
+- `useTenants()`
+- `useTenant(id)`
+- `useCreateTenant()`
+- `useUpdateTenant()`
+- `useActivateTenant()`
+- `useDeactivateTenant()`
 
-* `useTenants()`
-* `useTenant(id)`
-* `useTenantStats(id)`
-* `useCreateTenant()`
-* `useUpdateTenant()`
-* `useActivateTenant()`
-* `useDeactivateTenant()`
+Tenant data is currently read from a local array instead of an external API server.
 
-## Run Project
+## Technologies
 
-```bash
-npm install
-npm run dev
-```
+- React
+- TypeScript
+- Vite
+- TanStack Query
+- React Router
+- CSS
+- Netlify
 
-Open:
-
-```text
-http://localhost:5173
-```
-
-
-=======
-# onecloud-super-admin
->>>>>>> 57a7a7cac3981e19395e1ccd684c7b7c13f9de01
