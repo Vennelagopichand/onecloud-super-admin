@@ -3,29 +3,40 @@ import { useTenants } from "../../hooks/useTenants";
 function TenantStatusChart() {
   const {
     data: tenants = [],
+    isLoading,
   } = useTenants();
 
-  const activeTenants = tenants.filter(
-    (tenant) => tenant.status === "Active"
-  ).length;
-
-  const inactiveTenants = tenants.filter(
-    (tenant) => tenant.status === "Inactive"
-  ).length;
+  if (isLoading) {
+    return (
+      <div className="dashboard-card">
+        Loading tenant status...
+      </div>
+    );
+  }
 
   const total = tenants.length;
+
+  const active = tenants.filter(
+    (tenant) =>
+      tenant.status === "Active"
+  ).length;
+
+  const inactive = tenants.filter(
+    (tenant) =>
+      tenant.status === "Inactive"
+  ).length;
 
   const activePercentage =
     total > 0
       ? Math.round(
-          (activeTenants / total) * 100
+          (active / total) * 100
         )
       : 0;
 
   const inactivePercentage =
     total > 0
       ? Math.round(
-          (inactiveTenants / total) * 100
+          (inactive / total) * 100
         )
       : 0;
 
@@ -34,7 +45,10 @@ function TenantStatusChart() {
       <div className="dashboard-card-header">
         <div>
           <h2>Tenant Status</h2>
-          <p>Active vs inactive tenants</p>
+
+          <p>
+            Active vs inactive tenants
+          </p>
         </div>
       </div>
 
@@ -50,6 +64,7 @@ function TenantStatusChart() {
         >
           <div className="donut-center">
             <strong>{total}</strong>
+
             <span>Tenants</span>
           </div>
         </div>
@@ -58,31 +73,33 @@ function TenantStatusChart() {
           <div className="legend-item">
             <div>
               <span className="legend-dot active-dot" />
-              Active
+
+              <span>Active</span>
             </div>
 
             <strong>
-              {activeTenants}
+              {active}
             </strong>
 
-            <span>
+            <small>
               {activePercentage}%
-            </span>
+            </small>
           </div>
 
           <div className="legend-item">
             <div>
               <span className="legend-dot inactive-dot" />
-              Inactive
+
+              <span>Inactive</span>
             </div>
 
             <strong>
-              {inactiveTenants}
+              {inactive}
             </strong>
 
-            <span>
+            <small>
               {inactivePercentage}%
-            </span>
+            </small>
           </div>
         </div>
       </div>

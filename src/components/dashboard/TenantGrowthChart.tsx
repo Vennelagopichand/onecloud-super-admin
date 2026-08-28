@@ -1,33 +1,33 @@
-const tenantGrowthData = [
-  {
-    month: "Mar",
-    value: 62,
-  },
-  {
-    month: "Apr",
-    value: 74,
-  },
-  {
-    month: "May",
-    value: 83,
-  },
-  {
-    month: "Jun",
-    value: 95,
-  },
-  {
-    month: "Jul",
-    value: 108,
-  },
-  {
-    month: "Aug",
-    value: 125,
-  },
-];
+import { useTenants } from "../../hooks/useTenants";
 
 function TenantGrowthChart() {
+  const { data: tenants = [] } = useTenants();
+
+  const monthOrder = [
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+  ];
+
+  /*
+    Previous months are sample platform history.
+    August is calculated from the actual tenants array.
+  */
+  const data = [
+    { month: "Mar", value: 4 },
+    { month: "Apr", value: 5 },
+    { month: "May", value: 6 },
+    { month: "Jun", value: 8 },
+    { month: "Jul", value: 10 },
+    { month: "Aug", value: tenants.length },
+  ];
+
   const maxValue = Math.max(
-    ...tenantGrowthData.map((item) => item.value)
+    ...data.map((item) => item.value),
+    1
   );
 
   return (
@@ -35,39 +35,48 @@ function TenantGrowthChart() {
       <div className="dashboard-card-header">
         <div>
           <h2>Tenant Growth</h2>
-          <p>Tenant growth over the last 6 months</p>
+
+          <p>
+            Tenant registrations over the last
+            6 months
+          </p>
         </div>
 
         <span className="growth-label">
-          +18.4%
+          {tenants.length} Total
         </span>
       </div>
 
       <div className="growth-chart">
-        {tenantGrowthData.map((item) => {
-          const height =
-            (item.value / maxValue) * 100;
+        {monthOrder.map((month) => {
+          const item = data.find(
+            (entry) => entry.month === month
+          );
+
+          const value = item?.value ?? 0;
 
           return (
             <div
               className="chart-column"
-              key={item.month}
+              key={month}
             >
               <div className="chart-bar-wrapper">
                 <span className="chart-number">
-                  {item.value}
+                  {value}
                 </span>
 
                 <div
                   className="chart-bar"
                   style={{
-                    height: `${height}%`,
+                    height: `${
+                      (value / maxValue) * 100
+                    }%`,
                   }}
                 />
               </div>
 
               <span className="chart-month">
-                {item.month}
+                {month}
               </span>
             </div>
           );
