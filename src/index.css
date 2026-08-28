@@ -3079,3 +3079,790 @@ a {
 
   font-size: 11px;
 }
+/* =========================================================
+   FINAL MOBILE / TABLET RESPONSIVE FIX
+   Add this at the VERY BOTTOM of index.css
+========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1024px) {
+  .sidebar-wrapper {
+    width: 220px;
+  }
+
+  .sidebar {
+    width: 220px;
+  }
+
+  .admin-main {
+    width: calc(100% - 220px);
+    min-width: 0;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-two-column,
+  .health-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tenant-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  /* MAIN LAYOUT */
+
+  .admin-layout {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .admin-main {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .main-content {
+    width: 100%;
+    margin: 0;
+    padding: 16px;
+  }
+
+
+  /* =========================
+     MOBILE SIDEBAR
+  ========================= */
+
+  .sidebar-wrapper {
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    width: min(280px, 82vw);
+    height: 100vh;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.28s ease;
+
+    pointer-events: none;
+  }
+
+  .sidebar-wrapper.open {
+    transform: translateX(0);
+
+    pointer-events: auto;
+  }
+
+  .sidebar {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    padding: 22px 16px;
+
+    overflow-y: auto;
+
+    box-shadow:
+      8px 0 30px
+      rgba(15, 23, 42, 0.25);
+  }
+
+  .sidebar-logo {
+    padding: 0 8px 22px;
+  }
+
+  .sidebar-logo h2 {
+    font-size: 20px;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .sidebar-nav {
+    margin-top: 22px;
+  }
+
+  .nav-link {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    font-size: 14px;
+  }
+
+  .sidebar-footer {
+    padding: 16px 8px;
+  }
+
+
+  /* =========================
+     DARK OVERLAY
+  ========================= */
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 950;
+
+    display: block;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    backdrop-filter: blur(1px);
+  }
+
+
+  /* =========================
+     HEADER
+  ========================= */
+
+  .header {
+    position: sticky;
+    top: 0;
+
+    z-index: 900;
+
+    width: 100%;
+    height: 68px;
+
+    padding: 0 14px;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+
+    flex: 1;
+
+    min-width: 0;
+
+    gap: 8px;
+  }
+
+  .menu-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 8px;
+  }
+
+  .header-left h3 {
+    overflow: hidden;
+
+    max-width: 190px;
+
+    font-size: 16px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .header-left p {
+    display: none;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    gap: 7px;
+  }
+
+  .notification-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+  }
+
+  .notification-badge {
+    top: -3px;
+    right: -3px;
+  }
+
+  .header-user {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 50%;
+
+    background: white;
+  }
+
+  .header-avatar {
+    width: 34px;
+    height: 34px;
+
+    font-size: 11px;
+  }
+
+  .header-user-info {
+    display: none;
+  }
+
+
+  /* =========================
+     PAGE HEADER
+  ========================= */
+
+  .page-header {
+    margin-bottom: 18px;
+  }
+
+  .page-header-flex,
+  .dashboard-title {
+    display: flex;
+
+    align-items: stretch;
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .page-header h1 {
+    font-size: 23px;
+
+    line-height: 1.25;
+  }
+
+  .page-header p {
+    font-size: 13px;
+
+    line-height: 1.5;
+  }
+
+  .dashboard-date {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .primary-button {
+    width: 100%;
+  }
+
+
+  /* =========================
+     KPI CARDS
+  ========================= */
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .kpi-card {
+    width: 100%;
+
+    min-height: 145px;
+
+    padding: 18px;
+  }
+
+  .kpi-top {
+    margin-bottom: 14px;
+  }
+
+  .kpi-card h3 {
+    font-size: 26px;
+  }
+
+
+  /* =========================
+     DASHBOARD
+  ========================= */
+
+  .dashboard-two-column,
+  .health-row {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .dashboard-card {
+    width: 100%;
+
+    padding: 17px;
+  }
+
+  .dashboard-card-header {
+    gap: 10px;
+  }
+
+  .growth-chart {
+    width: 100%;
+    height: 190px;
+
+    overflow-x: auto;
+
+    justify-content: flex-start;
+  }
+
+  .chart-column {
+    min-width: 52px;
+  }
+
+  .chart-bar-wrapper {
+    width: 28px;
+  }
+
+  .status-chart-content {
+    width: 100%;
+  }
+
+  .chart-legend {
+    width: 100%;
+
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+
+  /* =========================
+     TENANT SUMMARY
+  ========================= */
+
+  .tenant-summary {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .tenant-summary > div {
+    width: 100%;
+
+    padding: 15px 16px;
+  }
+
+
+  /* =========================
+     TENANT CARD
+  ========================= */
+
+  .tenant-card {
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+  .tenant-card-top {
+    display: flex;
+
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 16px 16px 0;
+  }
+
+
+  /* =========================
+     FILTERS
+  ========================= */
+
+  .tenant-filters {
+    display: grid;
+
+    width: 100%;
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+    padding: 16px;
+  }
+
+  .search-box {
+    width: 100%;
+
+    grid-column: auto;
+  }
+
+  .search-box input,
+  .tenant-filters select,
+  .reset-button {
+    width: 100%;
+    min-width: 0;
+
+    height: 44px;
+  }
+
+  .reset-button {
+    padding: 0 14px;
+  }
+
+
+  /* =========================
+     TENANT TABLE
+  ========================= */
+
+  .table-responsive {
+    width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tenant-table {
+    width: max-content;
+
+    min-width: 1000px;
+  }
+
+  .tenant-table th,
+  .tenant-table td {
+    padding: 12px 14px;
+  }
+
+  .table-footer {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding: 14px 16px;
+  }
+
+  .pagination {
+    width: 100%;
+
+    flex-wrap: wrap;
+  }
+
+
+  /* =========================
+     CREATE / EDIT TENANT
+  ========================= */
+
+  .create-tenant-layout,
+  .edit-tenant-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .create-help-card,
+  .edit-summary-card {
+    order: -1;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .tenant-form {
+    padding: 17px;
+  }
+
+  .form-card-header {
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 17px;
+  }
+
+  .tenant-form-actions {
+    flex-direction: column-reverse;
+
+    gap: 9px;
+  }
+
+  .tenant-form-actions button,
+  .tenant-form-actions a {
+    width: 100%;
+  }
+
+
+  /* =========================
+     TENANT DETAILS
+  ========================= */
+
+  .tenant-details-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .details-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+
+    padding: 18px;
+  }
+
+  .details-heading {
+    width: 100%;
+
+    align-items: flex-start;
+  }
+
+  .details-top-actions {
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+  .details-top-actions a,
+  .details-top-actions button {
+    width: 100%;
+  }
+
+  .tenant-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-item:nth-child(odd) {
+    margin-right: 0;
+  }
+
+  .tenant-stats-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  /* =========================
+     TOAST
+  ========================= */
+
+  .toast {
+    top: 80px;
+    right: 14px;
+    left: 14px;
+
+    min-width: 0;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 12px;
+  }
+
+  .header {
+    height: 64px;
+
+    padding: 0 10px;
+  }
+
+  .menu-button {
+    width: 38px;
+    height: 38px;
+
+    font-size: 22px;
+  }
+
+  .header-left h3 {
+    max-width: 150px;
+
+    font-size: 14px;
+  }
+
+  .notification-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .header-user {
+    width: 38px;
+    height: 38px;
+  }
+
+  .header-avatar {
+    width: 30px;
+    height: 30px;
+
+    font-size: 10px;
+  }
+
+  .sidebar-wrapper {
+    width: min(275px, 84vw);
+  }
+
+  .sidebar {
+    padding: 20px 14px;
+  }
+
+  .page-header h1 {
+    font-size: 21px;
+  }
+
+  .page-header p {
+    font-size: 12px;
+  }
+
+  .kpi-card {
+    padding: 16px;
+  }
+
+  .dashboard-card {
+    padding: 15px;
+  }
+
+  .tenant-summary > div {
+    padding: 14px;
+  }
+
+  .tenant-card-top {
+    padding: 14px 14px 0;
+  }
+
+  .tenant-filters {
+    padding: 14px;
+  }
+
+  .tenant-form {
+    padding: 15px;
+  }
+
+  .form-card-header {
+    padding: 15px;
+  }
+
+  .details-heading-row {
+    padding: 15px;
+  }
+
+  .details-heading {
+    gap: 10px;
+  }
+
+  .details-logo {
+    width: 46px;
+    height: 46px;
+
+    font-size: 18px;
+  }
+
+  .tenant-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 6px;
+  }
+
+  .tenant-title-row h1 {
+    font-size: 19px;
+  }
+
+  .tenant-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .donut-chart {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+  .header-left h3 {
+    max-width: 115px;
+
+    font-size: 13px;
+  }
+
+  .header-right {
+    gap: 4px;
+  }
+
+  .notification-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header-user {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header-avatar {
+    width: 29px;
+    height: 29px;
+  }
+
+  .sidebar-wrapper {
+    width: 86vw;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+}
