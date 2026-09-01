@@ -1,26 +1,33 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import Sidebar from "./Sidebar";
 import Header from "./Header";
+import Sidebar from "./Sidebar";
 
 function AdminLayout() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] =
+    useState(false);
 
-  const toggleSidebar = () => {
-    setSidebarOpen((previous) => !previous);
-  };
+  function openSidebar() {
+    setSidebarOpen(true);
+  }
 
-  const closeSidebar = () => {
+  function closeSidebar() {
     setSidebarOpen(false);
-  };
+  }
 
   return (
     <div className="admin-layout">
-      <div className={sidebarOpen ? "sidebar-wrapper open" : "sidebar-wrapper"}>
-        <Sidebar />
+      {/* Sidebar */}
+      <div
+        className={`sidebar-wrapper ${
+          sidebarOpen ? "open" : ""
+        }`}
+      >
+        <Sidebar onClose={closeSidebar} />
       </div>
 
+      {/* Mobile Overlay */}
       {sidebarOpen && (
         <div
           className="sidebar-overlay"
@@ -28,8 +35,11 @@ function AdminLayout() {
         />
       )}
 
+      {/* Main Area */}
       <div className="admin-main">
-        <Header onMenuClick={toggleSidebar} />
+        <Header
+          onMenuClick={openSidebar}
+        />
 
         <main className="main-content">
           <Outlet />

@@ -18,7 +18,6 @@ function Sidebar({
 
   return (
     <aside className="sidebar">
-      {/* LOGO */}
       <div className="sidebar-logo">
         <div className="logo-icon">
           O
@@ -33,7 +32,6 @@ function Sidebar({
         </div>
       </div>
 
-      {/* NAVIGATION */}
       <nav className="sidebar-nav">
         <p className="menu-title">
           MAIN MENU
@@ -75,9 +73,56 @@ function Sidebar({
 
           Organization Management
         </NavLink>
+
+        <NavLink
+          to="/users"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">
+            ◉
+          </span>
+
+          User Management
+        </NavLink>
+
+        <NavLink
+          to="/roles"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">
+            ◆
+          </span>
+
+          Role Management
+        </NavLink>
+
+        <NavLink
+          to="/permissions"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">
+            ✓
+          </span>
+
+          Permission Management
+        </NavLink>
+
+        <NavLink
+          to="/data-permissions"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">
+            ◇
+          </span>
+
+          Data Permissions
+        </NavLink>
       </nav>
 
-      {/* SIDEBAR FOOTER */}
       <div className="sidebar-footer">
         <div className="admin-avatar">
           SA
