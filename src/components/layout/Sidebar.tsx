@@ -25,7 +25,6 @@ function Sidebar({
 
         <div>
           <h2>OneCloud</h2>
-
           <span>
             Super Admin Portal
           </span>
@@ -46,7 +45,6 @@ function Sidebar({
           <span className="nav-icon">
             ▦
           </span>
-
           Dashboard
         </NavLink>
 
@@ -58,7 +56,6 @@ function Sidebar({
           <span className="nav-icon">
             ◫
           </span>
-
           Tenant Management
         </NavLink>
 
@@ -70,7 +67,6 @@ function Sidebar({
           <span className="nav-icon">
             ▣
           </span>
-
           Organization Management
         </NavLink>
 
@@ -82,7 +78,6 @@ function Sidebar({
           <span className="nav-icon">
             ◉
           </span>
-
           User Management
         </NavLink>
 
@@ -94,7 +89,6 @@ function Sidebar({
           <span className="nav-icon">
             ◆
           </span>
-
           Role Management
         </NavLink>
 
@@ -106,7 +100,6 @@ function Sidebar({
           <span className="nav-icon">
             ✓
           </span>
-
           Permission Management
         </NavLink>
 
@@ -118,8 +111,40 @@ function Sidebar({
           <span className="nav-icon">
             ◇
           </span>
-
           Data Permissions
+        </NavLink>
+
+        <NavLink
+          to="/features"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">
+            ⚙
+          </span>
+          Feature Management
+        </NavLink>
+
+        <NavLink
+          to="/subscriptions"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">
+            ▤
+          </span>
+          Subscription & License
+        </NavLink>
+
+        <NavLink
+          to="/platform-config"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">
+            ⚒
+          </span>
+          Platform Configuration
         </NavLink>
       </nav>
 
@@ -132,10 +157,7 @@ function Sidebar({
           <strong>
             Super Admin
           </strong>
-
-          <p>
-            Administrator
-          </p>
+          <p>Administrator</p>
         </div>
       </div>
     </aside>
