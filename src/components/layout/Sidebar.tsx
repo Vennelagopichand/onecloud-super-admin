@@ -4,9 +4,7 @@ interface SidebarProps {
   onClose: () => void;
 }
 
-function Sidebar({
-  onClose,
-}: SidebarProps) {
+function Sidebar({ onClose }: SidebarProps) {
   const navClass = ({
     isActive,
   }: {
@@ -25,9 +23,7 @@ function Sidebar({
 
         <div>
           <h2>OneCloud</h2>
-          <span>
-            Super Admin Portal
-          </span>
+          <span>Super Admin Portal</span>
         </div>
       </div>
 
@@ -42,9 +38,7 @@ function Sidebar({
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">
-            ▦
-          </span>
+          <span className="nav-icon">▦</span>
           Dashboard
         </NavLink>
 
@@ -53,9 +47,7 @@ function Sidebar({
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">
-            ◫
-          </span>
+          <span className="nav-icon">◫</span>
           Tenant Management
         </NavLink>
 
@@ -64,9 +56,7 @@ function Sidebar({
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">
-            ▣
-          </span>
+          <span className="nav-icon">▣</span>
           Organization Management
         </NavLink>
 
@@ -75,9 +65,7 @@ function Sidebar({
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">
-            ◉
-          </span>
+          <span className="nav-icon">◉</span>
           User Management
         </NavLink>
 
@@ -86,9 +74,7 @@ function Sidebar({
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">
-            ◆
-          </span>
+          <span className="nav-icon">◆</span>
           Role Management
         </NavLink>
 
@@ -97,9 +83,7 @@ function Sidebar({
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">
-            ✓
-          </span>
+          <span className="nav-icon">✓</span>
           Permission Management
         </NavLink>
 
@@ -108,9 +92,7 @@ function Sidebar({
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">
-            ◇
-          </span>
+          <span className="nav-icon">◇</span>
           Data Permissions
         </NavLink>
 
@@ -119,9 +101,7 @@ function Sidebar({
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">
-            ⚙
-          </span>
+          <span className="nav-icon">⚙</span>
           Feature Management
         </NavLink>
 
@@ -130,9 +110,7 @@ function Sidebar({
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">
-            ▤
-          </span>
+          <span className="nav-icon">▤</span>
           Subscription & License
         </NavLink>
 
@@ -141,10 +119,35 @@ function Sidebar({
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">
-            ⚒
-          </span>
+          <span className="nav-icon">⚒</span>
           Platform Configuration
+        </NavLink>
+
+        <NavLink
+          to="/security"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">◈</span>
+          Security Management
+        </NavLink>
+
+        <NavLink
+          to="/audit-logs"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">▥</span>
+          Audit Logs
+        </NavLink>
+
+        <NavLink
+          to="/notifications"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">●</span>
+          Notification Management
         </NavLink>
       </nav>
 
@@ -154,9 +157,7 @@ function Sidebar({
         </div>
 
         <div>
-          <strong>
-            Super Admin
-          </strong>
+          <strong>Super Admin</strong>
           <p>Administrator</p>
         </div>
       </div>

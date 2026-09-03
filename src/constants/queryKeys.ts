@@ -45,4 +45,22 @@ export const queryKeys = {
   platformConfigs: ["platformConfigs"] as const,
   platformConfig: (id: number) =>
     ["platformConfig", id] as const,
+  
+  /* Security Management */
+  securityPolicies: ["securityPolicies"] as const,
+
+  securityPolicy: (id: number) =>
+  ["securityPolicy", id] as const,
+  
+  /* Audit Logs */
+  auditLogs: ["auditLogs"] as const,
+
+  auditLog: (id: number) =>
+  ["auditLog", id] as const,
+
+ /* Notification Management */
+  notifications: ["notifications"] as const,
+
+  notification: (id: number) =>
+  ["notification", id] as const,
 };
