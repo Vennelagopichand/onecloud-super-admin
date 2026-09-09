@@ -5,8 +5,7 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 
 function AdminLayout() {
-  const [sidebarOpen, setSidebarOpen] =
-    useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   function openSidebar() {
     setSidebarOpen(true);
@@ -18,13 +17,16 @@ function AdminLayout() {
 
   return (
     <div className="admin-layout">
+
       {/* Sidebar */}
       <div
         className={`sidebar-wrapper ${
           sidebarOpen ? "open" : ""
         }`}
       >
-        <Sidebar onClose={closeSidebar} />
+        <Sidebar
+          onClose={closeSidebar}
+        />
       </div>
 
       {/* Mobile Overlay */}
@@ -32,18 +34,23 @@ function AdminLayout() {
         <div
           className="sidebar-overlay"
           onClick={closeSidebar}
+          aria-hidden="true"
         />
       )}
 
-      {/* Main Area */}
+      {/* Main Application Area */}
       <div className="admin-main">
+
+        {/* Header */}
         <Header
           onMenuClick={openSidebar}
         />
 
+        {/* Page Content */}
         <main className="main-content">
           <Outlet />
         </main>
+
       </div>
     </div>
   );

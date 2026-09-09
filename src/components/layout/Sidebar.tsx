@@ -32,6 +32,8 @@ function Sidebar({ onClose }: SidebarProps) {
           MAIN MENU
         </p>
 
+        {/* Dashboard */}
+
         <NavLink
           to="/"
           end
@@ -42,6 +44,8 @@ function Sidebar({ onClose }: SidebarProps) {
           Dashboard
         </NavLink>
 
+        {/* Tenant Management */}
+
         <NavLink
           to="/tenants"
           className={navClass}
@@ -50,6 +54,8 @@ function Sidebar({ onClose }: SidebarProps) {
           <span className="nav-icon">◫</span>
           Tenant Management
         </NavLink>
+
+        {/* Organization Management */}
 
         <NavLink
           to="/organizations"
@@ -60,6 +66,8 @@ function Sidebar({ onClose }: SidebarProps) {
           Organization Management
         </NavLink>
 
+        {/* User Management */}
+
         <NavLink
           to="/users"
           className={navClass}
@@ -68,6 +76,8 @@ function Sidebar({ onClose }: SidebarProps) {
           <span className="nav-icon">◉</span>
           User Management
         </NavLink>
+
+        {/* Role Management */}
 
         <NavLink
           to="/roles"
@@ -78,6 +88,8 @@ function Sidebar({ onClose }: SidebarProps) {
           Role Management
         </NavLink>
 
+        {/* Permission Management */}
+
         <NavLink
           to="/permissions"
           className={navClass}
@@ -86,6 +98,8 @@ function Sidebar({ onClose }: SidebarProps) {
           <span className="nav-icon">✓</span>
           Permission Management
         </NavLink>
+
+        {/* Data Permissions */}
 
         <NavLink
           to="/data-permissions"
@@ -96,6 +110,8 @@ function Sidebar({ onClose }: SidebarProps) {
           Data Permissions
         </NavLink>
 
+        {/* Feature Management */}
+
         <NavLink
           to="/features"
           className={navClass}
@@ -104,6 +120,8 @@ function Sidebar({ onClose }: SidebarProps) {
           <span className="nav-icon">⚙</span>
           Feature Management
         </NavLink>
+
+        {/* Subscription & License */}
 
         <NavLink
           to="/subscriptions"
@@ -114,6 +132,8 @@ function Sidebar({ onClose }: SidebarProps) {
           Subscription & License
         </NavLink>
 
+        {/* Platform Configuration */}
+
         <NavLink
           to="/platform-config"
           className={navClass}
@@ -122,6 +142,8 @@ function Sidebar({ onClose }: SidebarProps) {
           <span className="nav-icon">⚒</span>
           Platform Configuration
         </NavLink>
+
+        {/* Security Management */}
 
         <NavLink
           to="/security"
@@ -132,6 +154,8 @@ function Sidebar({ onClose }: SidebarProps) {
           Security Management
         </NavLink>
 
+        {/* Audit Logs */}
+
         <NavLink
           to="/audit-logs"
           className={navClass}
@@ -141,13 +165,26 @@ function Sidebar({ onClose }: SidebarProps) {
           Audit Logs
         </NavLink>
 
+        {/* Notification Management */}
+
         <NavLink
           to="/notifications"
           className={navClass}
           onClick={onClose}
         >
-          <span className="nav-icon">●</span>
+          <span className="nav-icon">🔔</span>
           Notification Management
+        </NavLink>
+
+        {/* Monitoring Management */}
+
+        <NavLink
+          to="/monitoring"
+          className={navClass}
+          onClick={onClose}
+        >
+          <span className="nav-icon">◉</span>
+          Monitoring Management
         </NavLink>
       </nav>
 

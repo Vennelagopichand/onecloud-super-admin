@@ -63,4 +63,11 @@ export const queryKeys = {
 
   notification: (id: number) =>
   ["notification", id] as const,
+
+/* Monitoring Management */
+  monitoringServices: ["monitoringServices"] as const,
+
+  monitoringService: (id: number) =>
+  ["monitoringService", id] as const,
+
 };

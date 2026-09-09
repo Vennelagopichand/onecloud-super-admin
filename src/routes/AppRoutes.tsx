@@ -1,246 +1,421 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
+import ProtectedRoute from "./ProtectedRoute";
 import AdminLayout from "../components/layout/AdminLayout";
 
-/* DASHBOARD */
+import Login from "../pages/Login";
+
 import Dashboard from "../pages/Dashboard";
 
-/* TENANTS */
+/* Tenant Management */
 import TenantList from "../pages/tenants/TenantList";
 import CreateTenant from "../pages/tenants/CreateTenant";
 import TenantDetails from "../pages/tenants/TenantDetails";
 import EditTenant from "../pages/tenants/EditTenant";
 
-/* ORGANIZATIONS */
+/* Organization Management */
 import OrganizationList from "../pages/organizations/OrganizationList";
 import CreateOrganization from "../pages/organizations/CreateOrganization";
 import OrganizationDetails from "../pages/organizations/OrganizationDetails";
 import EditOrganization from "../pages/organizations/EditOrganization";
 
-/* USERS */
+/* User Management */
 import UserList from "../pages/users/UserList";
 import CreateUser from "../pages/users/CreateUser";
 import UserDetails from "../pages/users/UserDetails";
 import EditUser from "../pages/users/EditUser";
 
-/* ROLES */
+/* Role Management */
 import RoleList from "../pages/roles/RoleList";
 import CreateRole from "../pages/roles/CreateRole";
 import RoleDetails from "../pages/roles/RoleDetails";
 import EditRole from "../pages/roles/EditRole";
 
-/* PERMISSIONS */
+/* Permission Management */
 import PermissionList from "../pages/permissions/PermissionList";
 import CreatePermission from "../pages/permissions/CreatePermission";
 import PermissionDetails from "../pages/permissions/PermissionDetails";
 import EditPermission from "../pages/permissions/EditPermission";
 
-/* DATA PERMISSIONS */
+/* Data Permissions */
 import DataPermissionList from "../pages/dataPermissions/DataPermissionList";
 import CreateDataPermission from "../pages/dataPermissions/CreateDataPermission";
 import DataPermissionDetails from "../pages/dataPermissions/DataPermissionDetails";
 import EditDataPermission from "../pages/dataPermissions/EditDataPermission";
 
-/* FEATURES */
+/* Feature Management */
 import FeatureList from "../pages/features/FeatureList";
 import CreateFeature from "../pages/features/CreateFeature";
 import FeatureDetails from "../pages/features/FeatureDetails";
 import EditFeature from "../pages/features/EditFeature";
 
-/* SUBSCRIPTIONS */
+/* Subscription & License */
 import SubscriptionList from "../pages/subscriptions/SubscriptionList";
 import CreateSubscription from "../pages/subscriptions/CreateSubscription";
 import SubscriptionDetails from "../pages/subscriptions/SubscriptionDetails";
 import EditSubscription from "../pages/subscriptions/EditSubscription";
 
-/* PLATFORM CONFIGURATION */
+/* Platform Configuration */
 import PlatformConfigList from "../pages/platformConfig/PlatformConfigList";
 import CreatePlatformConfig from "../pages/platformConfig/CreatePlatformConfig";
 import PlatformConfigDetails from "../pages/platformConfig/PlatformConfigDetails";
 import EditPlatformConfig from "../pages/platformConfig/EditPlatformConfig";
 
-/* SECURITY */
+/* Security Management */
 import SecurityList from "../pages/security/SecurityList";
 import CreateSecurity from "../pages/security/CreateSecurity";
 import SecurityDetails from "../pages/security/SecurityDetails";
 import EditSecurity from "../pages/security/EditSecurity";
 
-/* AUDIT LOGS */
+/* Audit Logs */
 import AuditLogList from "../pages/auditLogs/AuditLogList";
 import AuditLogDetails from "../pages/auditLogs/AuditLogDetails";
 
-/* NOTIFICATIONS */
+/* Notification Management */
 import NotificationList from "../pages/notifications/NotificationList";
 import CreateNotification from "../pages/notifications/CreateNotification";
 import NotificationDetails from "../pages/notifications/NotificationDetails";
 import EditNotification from "../pages/notifications/EditNotification";
 
+/* Monitoring Management */
+import MonitoringList from "../pages/monitoring/MonitoringList";
+import MonitoringDetails from "../pages/monitoring/MonitoringDetails";
+
 function AppRoutes() {
   return (
     <Routes>
-      <Route element={<AdminLayout />}>
-        {/* DASHBOARD */}
-        <Route path="/" element={<Dashboard />} />
+      {/* =========================================================
+          PUBLIC ROUTES
+      ========================================================= */}
 
-        {/* TENANTS */}
-        <Route path="/tenants" element={<TenantList />} />
-        <Route path="/tenants/create" element={<CreateTenant />} />
-        <Route path="/tenants/:id" element={<TenantDetails />} />
-        <Route path="/tenants/:id/edit" element={<EditTenant />} />
+      <Route
+        path="/login"
+        element={<Login />}
+      />
 
-        {/* ORGANIZATIONS */}
-        <Route
-          path="/organizations"
-          element={<OrganizationList />}
-        />
-        <Route
-          path="/organizations/create"
-          element={<CreateOrganization />}
-        />
-        <Route
-          path="/organizations/:id"
-          element={<OrganizationDetails />}
-        />
-        <Route
-          path="/organizations/:id/edit"
-          element={<EditOrganization />}
-        />
+      {/* =========================================================
+          PROTECTED ROUTES
+      ========================================================= */}
 
-        {/* USERS */}
-        <Route path="/users" element={<UserList />} />
-        <Route path="/users/create" element={<CreateUser />} />
-        <Route path="/users/:id" element={<UserDetails />} />
-        <Route path="/users/:id/edit" element={<EditUser />} />
+      <Route element={<ProtectedRoute />}>
+        <Route element={<AdminLayout />}>
 
-        {/* ROLES */}
-        <Route path="/roles" element={<RoleList />} />
-        <Route path="/roles/create" element={<CreateRole />} />
-        <Route path="/roles/:id" element={<RoleDetails />} />
-        <Route path="/roles/:id/edit" element={<EditRole />} />
+          {/* =====================================================
+              DASHBOARD
+          ===================================================== */}
 
-        {/* PERMISSIONS */}
-        <Route path="/permissions" element={<PermissionList />} />
-        <Route
-          path="/permissions/create"
-          element={<CreatePermission />}
-        />
-        <Route
-          path="/permissions/:id"
-          element={<PermissionDetails />}
-        />
-        <Route
-          path="/permissions/:id/edit"
-          element={<EditPermission />}
-        />
+          <Route
+            path="/"
+            element={<Dashboard />}
+          />
 
-        {/* DATA PERMISSIONS */}
-        <Route
-          path="/data-permissions"
-          element={<DataPermissionList />}
-        />
-        <Route
-          path="/data-permissions/create"
-          element={<CreateDataPermission />}
-        />
-        <Route
-          path="/data-permissions/:id"
-          element={<DataPermissionDetails />}
-        />
-        <Route
-          path="/data-permissions/:id/edit"
-          element={<EditDataPermission />}
-        />
+          {/* =====================================================
+              TENANT MANAGEMENT
+          ===================================================== */}
 
-        {/* FEATURES */}
-        <Route path="/features" element={<FeatureList />} />
-        <Route path="/features/create" element={<CreateFeature />} />
-        <Route path="/features/:id" element={<FeatureDetails />} />
-        <Route path="/features/:id/edit" element={<EditFeature />} />
+          <Route
+            path="/tenants"
+            element={<TenantList />}
+          />
 
-        {/* SUBSCRIPTIONS */}
-        <Route
-          path="/subscriptions"
-          element={<SubscriptionList />}
-        />
-        <Route
-          path="/subscriptions/create"
-          element={<CreateSubscription />}
-        />
-        <Route
-          path="/subscriptions/:id"
-          element={<SubscriptionDetails />}
-        />
-        <Route
-          path="/subscriptions/:id/edit"
-          element={<EditSubscription />}
-        />
+          <Route
+            path="/tenants/create"
+            element={<CreateTenant />}
+          />
 
-        {/* PLATFORM CONFIGURATION */}
-        <Route
-          path="/platform-config"
-          element={<PlatformConfigList />}
-        />
-        <Route
-          path="/platform-config/create"
-          element={<CreatePlatformConfig />}
-        />
-        <Route
-          path="/platform-config/:id"
-          element={<PlatformConfigDetails />}
-        />
-        <Route
-          path="/platform-config/:id/edit"
-          element={<EditPlatformConfig />}
-        />
+          <Route
+            path="/tenants/:id"
+            element={<TenantDetails />}
+          />
 
-        {/* SECURITY */}
-        <Route path="/security" element={<SecurityList />} />
-        <Route
-          path="/security/create"
-          element={<CreateSecurity />}
-        />
-        <Route
-          path="/security/:id"
-          element={<SecurityDetails />}
-        />
-        <Route
-          path="/security/:id/edit"
-          element={<EditSecurity />}
-        />
+          <Route
+            path="/tenants/:id/edit"
+            element={<EditTenant />}
+          />
 
-        {/* AUDIT LOGS */}
-        <Route
-          path="/audit-logs"
-          element={<AuditLogList />}
-        />
-        <Route
-          path="/audit-logs/:id"
-          element={<AuditLogDetails />}
-        />
+          {/* =====================================================
+              ORGANIZATION MANAGEMENT
+          ===================================================== */}
 
-        {/* NOTIFICATION MANAGEMENT */}
-        <Route
-          path="/notifications"
-          element={<NotificationList />}
-        />
-        <Route
-          path="/notifications/create"
-          element={<CreateNotification />}
-        />
-        <Route
-          path="/notifications/:id"
-          element={<NotificationDetails />}
-        />
-        <Route
-          path="/notifications/:id/edit"
-          element={<EditNotification />}
-        />
+          <Route
+            path="/organizations"
+            element={<OrganizationList />}
+          />
 
-        {/* FALLBACK */}
-        <Route
-          path="*"
-          element={<Navigate to="/" replace />}
-        />
+          <Route
+            path="/organizations/create"
+            element={<CreateOrganization />}
+          />
+
+          <Route
+            path="/organizations/:id"
+            element={<OrganizationDetails />}
+          />
+
+          <Route
+            path="/organizations/:id/edit"
+            element={<EditOrganization />}
+          />
+
+          {/* =====================================================
+              USER MANAGEMENT
+          ===================================================== */}
+
+          <Route
+            path="/users"
+            element={<UserList />}
+          />
+
+          <Route
+            path="/users/create"
+            element={<CreateUser />}
+          />
+
+          <Route
+            path="/users/:id"
+            element={<UserDetails />}
+          />
+
+          <Route
+            path="/users/:id/edit"
+            element={<EditUser />}
+          />
+
+          {/* =====================================================
+              ROLE MANAGEMENT
+          ===================================================== */}
+
+          <Route
+            path="/roles"
+            element={<RoleList />}
+          />
+
+          <Route
+            path="/roles/create"
+            element={<CreateRole />}
+          />
+
+          <Route
+            path="/roles/:id"
+            element={<RoleDetails />}
+          />
+
+          <Route
+            path="/roles/:id/edit"
+            element={<EditRole />}
+          />
+
+          {/* =====================================================
+              PERMISSION MANAGEMENT
+          ===================================================== */}
+
+          <Route
+            path="/permissions"
+            element={<PermissionList />}
+          />
+
+          <Route
+            path="/permissions/create"
+            element={<CreatePermission />}
+          />
+
+          <Route
+            path="/permissions/:id"
+            element={<PermissionDetails />}
+          />
+
+          <Route
+            path="/permissions/:id/edit"
+            element={<EditPermission />}
+          />
+
+          {/* =====================================================
+              DATA PERMISSIONS
+          ===================================================== */}
+
+          <Route
+            path="/data-permissions"
+            element={<DataPermissionList />}
+          />
+
+          <Route
+            path="/data-permissions/create"
+            element={<CreateDataPermission />}
+          />
+
+          <Route
+            path="/data-permissions/:id"
+            element={<DataPermissionDetails />}
+          />
+
+          <Route
+            path="/data-permissions/:id/edit"
+            element={<EditDataPermission />}
+          />
+
+          {/* =====================================================
+              FEATURE MANAGEMENT
+          ===================================================== */}
+
+          <Route
+            path="/features"
+            element={<FeatureList />}
+          />
+
+          <Route
+            path="/features/create"
+            element={<CreateFeature />}
+          />
+
+          <Route
+            path="/features/:id"
+            element={<FeatureDetails />}
+          />
+
+          <Route
+            path="/features/:id/edit"
+            element={<EditFeature />}
+          />
+
+          {/* =====================================================
+              SUBSCRIPTION & LICENSE MANAGEMENT
+          ===================================================== */}
+
+          <Route
+            path="/subscriptions"
+            element={<SubscriptionList />}
+          />
+
+          <Route
+            path="/subscriptions/create"
+            element={<CreateSubscription />}
+          />
+
+          <Route
+            path="/subscriptions/:id"
+            element={<SubscriptionDetails />}
+          />
+
+          <Route
+            path="/subscriptions/:id/edit"
+            element={<EditSubscription />}
+          />
+
+          {/* =====================================================
+              PLATFORM CONFIGURATION
+          ===================================================== */}
+
+          <Route
+            path="/platform-config"
+            element={<PlatformConfigList />}
+          />
+
+          <Route
+            path="/platform-config/create"
+            element={<CreatePlatformConfig />}
+          />
+
+          <Route
+            path="/platform-config/:id"
+            element={<PlatformConfigDetails />}
+          />
+
+          <Route
+            path="/platform-config/:id/edit"
+            element={<EditPlatformConfig />}
+          />
+
+          {/* =====================================================
+              SECURITY MANAGEMENT
+          ===================================================== */}
+
+          <Route
+            path="/security"
+            element={<SecurityList />}
+          />
+
+          <Route
+            path="/security/create"
+            element={<CreateSecurity />}
+          />
+
+          <Route
+            path="/security/:id"
+            element={<SecurityDetails />}
+          />
+
+          <Route
+            path="/security/:id/edit"
+            element={<EditSecurity />}
+          />
+
+          {/* =====================================================
+              AUDIT LOGS
+          ===================================================== */}
+
+          <Route
+            path="/audit-logs"
+            element={<AuditLogList />}
+          />
+
+          <Route
+            path="/audit-logs/:id"
+            element={<AuditLogDetails />}
+          />
+
+          {/* =====================================================
+              NOTIFICATION MANAGEMENT
+          ===================================================== */}
+
+          <Route
+            path="/notifications"
+            element={<NotificationList />}
+          />
+
+          <Route
+            path="/notifications/create"
+            element={<CreateNotification />}
+          />
+
+          <Route
+            path="/notifications/:id"
+            element={<NotificationDetails />}
+          />
+
+          <Route
+            path="/notifications/:id/edit"
+            element={<EditNotification />}
+          />
+
+          {/* =====================================================
+              MONITORING MANAGEMENT
+          ===================================================== */}
+
+          <Route
+            path="/monitoring"
+            element={<MonitoringList />}
+          />
+
+          <Route
+            path="/monitoring/:id"
+            element={<MonitoringDetails />}
+          />
+
+          {/* =====================================================
+              FALLBACK
+          ===================================================== */}
+
+          <Route
+            path="*"
+            element={
+              <Navigate
+                to="/"
+                replace
+              />
+            }
+          />
+
+        </Route>
       </Route>
     </Routes>
   );
