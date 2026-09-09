@@ -1,50 +1,55 @@
-import { useTenants } from "../../hooks/useTenants";
+import { useMemo } from "react";
 
-function TenantStatusChart() {
-  const {
-    data: tenants = [],
-    isLoading,
-  } = useTenants();
+interface TenantStatusChartProps {
+  activeTenants?: number;
+  inactiveTenants?: number;
+  totalTenants?: number;
+}
 
-  if (isLoading) {
-    return (
-      <div className="dashboard-card">
-        Loading tenant status...
-      </div>
-    );
-  }
+function TenantStatusChart({
+  activeTenants = 9,
+  inactiveTenants = 3,
+  totalTenants = 12,
+}: TenantStatusChartProps) {
+  const status = useMemo(() => {
+    const total =
+      totalTenants > 0
+        ? totalTenants
+        : activeTenants + inactiveTenants;
 
-  const total = tenants.length;
+    const activePercentage =
+      total > 0
+        ? Math.round((activeTenants / total) * 100)
+        : 0;
 
-  const active = tenants.filter(
-    (tenant) =>
-      tenant.status === "Active"
-  ).length;
+    const inactivePercentage =
+      total > 0
+        ? Math.round((inactiveTenants / total) * 100)
+        : 0;
 
-  const inactive = tenants.filter(
-    (tenant) =>
-      tenant.status === "Inactive"
-  ).length;
+    const activeDegrees =
+      activePercentage * 3.6;
 
-  const activePercentage =
-    total > 0
-      ? Math.round(
-          (active / total) * 100
-        )
-      : 0;
-
-  const inactivePercentage =
-    total > 0
-      ? Math.round(
-          (inactive / total) * 100
-        )
-      : 0;
+    return {
+      total,
+      activePercentage,
+      inactivePercentage,
+      activeDegrees,
+    };
+  }, [
+    activeTenants,
+    inactiveTenants,
+    totalTenants,
+  ]);
 
   return (
-    <div className="dashboard-card">
-      <div className="dashboard-card-header">
+    <div className="tenant-status-chart">
+
+      {/* Header */}
+
+      <div className="tenant-status-header">
         <div>
-          <h2>Tenant Status</h2>
+          <h3>Tenant Status</h3>
 
           <p>
             Active vs inactive tenants
@@ -52,57 +57,76 @@ function TenantStatusChart() {
         </div>
       </div>
 
-      <div className="status-chart-content">
+      {/* Circular Chart */}
+
+      <div className="tenant-status-circle-wrapper">
+
         <div
-          className="donut-chart"
+          className="tenant-status-circle"
           style={{
             background: `conic-gradient(
-              #22c55e 0% ${activePercentage}%,
-              #ef4444 ${activePercentage}% 100%
+              #22c55e 0deg ${status.activeDegrees}deg,
+              #ef4444 ${status.activeDegrees}deg 360deg
             )`,
           }}
         >
-          <div className="donut-center">
-            <strong>{total}</strong>
+          <div className="tenant-status-circle-inner">
 
-            <span>Tenants</span>
+            <strong>
+              {status.total}
+            </strong>
+
+            <span>
+              Tenants
+            </span>
+
           </div>
         </div>
 
-        <div className="chart-legend">
-          <div className="legend-item">
-            <div>
-              <span className="legend-dot active-dot" />
-
-              <span>Active</span>
-            </div>
-
-            <strong>
-              {active}
-            </strong>
-
-            <small>
-              {activePercentage}%
-            </small>
-          </div>
-
-          <div className="legend-item">
-            <div>
-              <span className="legend-dot inactive-dot" />
-
-              <span>Inactive</span>
-            </div>
-
-            <strong>
-              {inactive}
-            </strong>
-
-            <small>
-              {inactivePercentage}%
-            </small>
-          </div>
-        </div>
       </div>
+
+      {/* Status Cards */}
+
+      <div className="tenant-status-items">
+
+        {/* Active */}
+
+        <div className="tenant-status-item">
+
+          <div className="tenant-status-item-label">
+            <span className="tenant-status-dot active" />
+
+            <span>
+              Active
+            </span>
+          </div>
+
+          <strong>
+            {status.activePercentage}%
+          </strong>
+
+        </div>
+
+        {/* Inactive */}
+
+        <div className="tenant-status-item">
+
+          <div className="tenant-status-item-label">
+            <span className="tenant-status-dot inactive" />
+
+            <span>
+              Inactive
+            </span>
+          </div>
+
+          <strong>
+            {status.inactivePercentage}%
+          </strong>
+
+        </div>
+
+      </div>
+
     </div>
   );
 }
